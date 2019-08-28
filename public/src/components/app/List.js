@@ -1,5 +1,5 @@
 import Component from '../Component.js';
-import ListItem from './ListItem.js;'
+import ListItem from './ListItem.js';
 
 class List extends Component {
 

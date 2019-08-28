@@ -8,6 +8,10 @@ li {
     padding: 10px;
 }
 
+.strike-through {
+    text-decoration: line-through; 
+}
+
 .delete {
     margin: 10px;
 }
