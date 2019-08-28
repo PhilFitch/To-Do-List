@@ -1,9 +1,9 @@
 import Component from '../Component.js';
-import { link } from 'fs';
+
 
 class ListItem extends Component {
     onRender(dom) {
-        let checkbox = dom.querySelector('input.checkbox');
+        let checkbox = dom.querySelector('.checkbox');
         
         checkbox.addEventListener('change', event => {
             event.preventDefault();
@@ -15,7 +15,7 @@ class ListItem extends Component {
             }
         });
         
-        let deleteButton = dom.querySelector('button.delete');
+        let deleteButton = dom.querySelector('.delete');
 
         deleteButton.addEventListener('click', event => {
             event.preventDefault();

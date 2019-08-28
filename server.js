@@ -20,15 +20,10 @@ app.use(cors()); // enable CORS request
 app.use(express.static('public'));
 app.use(express.json());
 
-// app.get('/api/cart_pods', (req, res) => {
+// app.get('/api/to_do', (req, res) => {
 //     client.query(`
-//         SELECT
-//             id,
-//             name,
-//             no_of_carts,
-//             seating,
-//             location
-//         FROM CART_PODS;
+//         SELECT item
+//         FROM TO_DO;
 //     `)
 //         .then(result => {
 //             res.json(result.rows);
