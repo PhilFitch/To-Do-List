@@ -20,3 +20,7 @@ section {
     padding: 10px;
     font-size: 1.5em;
 }
+
+button {
+    cursor: pointer;
+}

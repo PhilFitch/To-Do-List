@@ -13,7 +13,7 @@ client.connect()
             CREATE TABLE to_do (
                 id SERIAL PRIMARY KEY NOT NULL,
                 item VARCHAR(256) NOT NULL,
-                completed BOOLEAN NOT NULL,
+                completed BOOLEAN NOT NULL
             );
         `);
     })

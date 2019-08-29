@@ -20,20 +20,39 @@ app.use(cors()); // enable CORS request
 app.use(express.static('public'));
 app.use(express.json());
 
-// app.get('/api/to_do', (req, res) => {
-//     client.query(`
-//         SELECT item
-//         FROM TO_DO;
-//     `)
-//         .then(result => {
-//             res.json(result.rows);
-//         })
-//         .catch(err => {
-//             res.status(500).json({
-//                 error: err.message || err
-//             });
-//         });
-// });
+app.get('/api/list_items', (req, res) => {
+    client.query(`
+        SELECT *
+        FROM TO_DO;
+    `)
+        .then(result => {
+            res.json(result.rows);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
+
+app.post('api/list_items', (req, res) => {
+    const item = req.body;
+    client.query(`
+        INSERT INTO items (items, completed)
+        VALUES ($1, $2)
+        RETURNING *;
+    `,
+    [item.item, item.completed]
+    )
+        .then(result => {
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        });
+});
 
 // Start the server
 app.listen(PORT, () => {

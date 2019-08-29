@@ -3,14 +3,14 @@ import ListItem from './ListItem.js';
 
 class List extends Component {
 
-    onRender(dom) {
+    onRender(list) {
         const items = this.props.items;
+        const onUpdate = this.props.onUpdate;
+        const onRemove = this.props.onRemove;
 
         items.forEach(item => {
-            const props = { item: item };
-            const listItem = new ListItem(props);
-            const listItemDOM = listItem.renderDOM();
-            dom.appendChild(listItemDOM);
+            const listItem = new ListItem({ item, onUpdate, onRemove, });
+            list.appendChild(listItem.renderDOM());
         });
     }
 

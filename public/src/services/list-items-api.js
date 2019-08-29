@@ -16,18 +16,34 @@ function fetchWithError(url, options) {
 
 export function getItems() {
     const url = `${URL}/list_items`;
-
-    return fetch(url)
-        .then(response => response.json());
+    return fetchWithError(url);
 }
 
-export function addType(type) {
-    const url = `${URL}/types`;
+export function addItem(item) {
+    const url = `${URL}/list_items`;
     return fetchWithError(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(type)
+        body: JSON.stringify(item)
+    });
+}
+
+export function updateItem(item) {
+    const url = `${URL}/list_items/${item.id}`;
+    return fetchWithError(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(item)
+    });
+}
+
+export function removeItem(id) {
+    const url = `${URL}/list_items/${id}`;
+    return fetchWithError(url, {
+        method: 'DELETE'
     });
 }
