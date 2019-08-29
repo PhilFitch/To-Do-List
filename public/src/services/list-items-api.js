@@ -1,7 +1,7 @@
 const URL = '/api';
 
-function fetchWithError(url, options) {
-    return fetch(url, options)
+function fetchWithError(url) {
+    return fetch(url)
         .then(response => {
             if(response.ok) {
                 return response.json();

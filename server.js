@@ -35,10 +35,10 @@ app.get('/api/list_items', (req, res) => {
         });
 });
 
-app.post('api/list_items', (req, res) => {
+app.post('/api/list_items', (req, res) => {
     const item = req.body;
     client.query(`
-        INSERT INTO items (items, completed)
+        INSERT INTO to_do (item, completed)
         VALUES ($1, $2)
         RETURNING *;
     `,
@@ -52,6 +52,48 @@ app.post('api/list_items', (req, res) => {
                 error: err.message || err
             });
         });
+});
+
+app.put('/api/list_items/:id', (req, res) => {
+    const id = req.params.id;
+    const item = req.body;
+    console.log(id);
+    client.query(`
+        UPDATE to_do
+        SET    completed = $2
+        WHERE  id = $1
+        RETURNING *;
+    `,
+    [id, item.completed]
+    )
+        .then(result => {
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        }); 
+});
+
+app.delete('/api/list_items/:id', (req, res) => {
+    const id = req.params.id;
+
+    client.query(`
+        DELETE FROM to_do
+        WHERE  id = $1
+        RETURNING *;
+    `,
+    [id]
+    )
+        .then(result => {
+            res.json(result.rows[0]);
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err.message || err
+            });
+        }); 
 });
 
 // Start the server

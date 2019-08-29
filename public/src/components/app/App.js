@@ -11,7 +11,7 @@ class App extends Component {
         const header = new Header({ title: 'To Do List' });
         dom.prepend(header.renderDOM());
 
-        const main = dom.querySelector('main')
+        const main = dom.querySelector('main');
 
         const listDiv = dom.querySelector('#list');
         
@@ -35,7 +35,7 @@ class App extends Component {
                         items.splice(index, 1);
 
                         list.update({ items });
-                    })
+                    });
             }
         });
         listDiv.appendChild(list.renderDOM());
