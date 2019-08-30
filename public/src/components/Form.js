@@ -10,12 +10,9 @@ class Form extends Component {
 
         form.addEventListener('submit', event => {
             event.preventDefault();
-
             const newItem = { 
                 item: input.value,
-                completed: false
             };
-
             error.textContent = '';
             
             onAdd(newItem) 
@@ -35,8 +32,8 @@ class Form extends Component {
         return /*html*/`
         <section>
             <form id="item-entry">
-                <button id="add" type="submit">Add:</button>
-                <input name="new-item" placeholder="<enter task>" required>
+            <input name="new-item" placeholder="<enter task>" required>
+            <button id="add" type="submit">Add:</button>
             </form>
             <p class="error"></p>
         </section>

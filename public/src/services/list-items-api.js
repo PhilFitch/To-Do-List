@@ -1,9 +1,11 @@
 const URL = '/api';
 
-function fetchWithError(url) {
-    return fetch(url)
-        .then(response => {
-            if(response.ok) {
+function fetchWithError(url, options) {
+    
+    return fetch(url, options)
+    .then(response => {
+        if(response.ok) {
+            console.log('bla');
                 return response.json();
             }
             else {
@@ -20,6 +22,7 @@ export function getItems() {
 }
 
 export function addItem(item) {
+    
     const url = `${URL}/list_items`;
     return fetchWithError(url, {
         method: 'POST',

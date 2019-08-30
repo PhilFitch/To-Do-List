@@ -37,12 +37,13 @@ app.get('/api/list_items', (req, res) => {
 
 app.post('/api/list_items', (req, res) => {
     const item = req.body;
+    console.log(item, 'in server');
     client.query(`
-        INSERT INTO to_do (item, completed)
-        VALUES ($1, $2)
+        INSERT INTO to_do (item)
+        VALUES ($1)
         RETURNING *;
     `,
-    [item.item, item.completed]
+    [item.item]
     )
         .then(result => {
             res.json(result.rows[0]);
