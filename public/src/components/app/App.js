@@ -46,22 +46,22 @@ class App extends Component {
             onAdd: item => {
                 
                 return addItem(item)
-                .then(saved => {
+                    .then(saved => {
 
                     
-                    const items = this.state.items;
-                    items.push(saved);
-                    list.update({ items });
-                });
+                        const items = this.state.items;
+                        items.push(saved);
+                        list.update({ items });
+                    });
             }
         });
         main.appendChild(form.renderDOM());
         
         getItems({ showAll: true })
-        .then(items => {
-            this.state.items = items;
-            list.update({ items });
-            console.log(items, 'in app');
+            .then(items => {
+                this.state.items = items;
+                list.update({ items });
+                console.log(items, 'in app');
             })
             .catch(err => {
                 console.log(err);
