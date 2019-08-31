@@ -61,7 +61,6 @@ class App extends Component {
             .then(items => {
                 this.state.items = items;
                 list.update({ items });
-                console.log(items, 'in app');
             })
             .catch(err => {
                 console.log(err);
