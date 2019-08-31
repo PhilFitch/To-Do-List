@@ -3,9 +3,8 @@ const URL = '/api';
 function fetchWithError(url, options) {
     
     return fetch(url, options)
-    .then(response => {
-        if(response.ok) {
-            console.log('bla');
+        .then(response => {
+            if(response.ok) {
                 return response.json();
             }
             else {
