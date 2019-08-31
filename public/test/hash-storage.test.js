@@ -1,4 +1,4 @@
-import hashStorage from '../src/hash-storage.js';
+import hashStorage from '../src/services/hash-storage.js';
 const test = QUnit.test;
 
 QUnit.module('Hash Storage');
